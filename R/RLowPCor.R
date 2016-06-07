@@ -16,7 +16,7 @@
 #' (c) shrink PC if the covariance matrix used to estimate PC in (b) is not positive definite or invertible. If the searching space is very large, there might still
 #' be a number of irrelevant controls involved in shrink PC procedure (c). An alternative is (d) deleting less connected neighbours of the nodes until the covariance
 #' matrix in (b) is positive definite and invertible.
-#' @return A network with rank weighted edges.
+#' @return a network matrix
 #' @references Sch\"afer J, Strimmer K: A Shrinkage Approach to Large-Scale Covariance Matrix Estimation and Implications for Functional Genomics. Statistical Applications
 #' in Genetics and Molecular Biology, The Berkeley Electronic Press 2005, 4(1).
 #' @export

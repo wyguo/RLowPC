@@ -3,3 +3,4 @@
 export(RLowPCor)
 export(adj2rankadj)
 export(average.consensus)
+export(table.evaluate)

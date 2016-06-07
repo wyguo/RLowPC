@@ -18,7 +18,7 @@ and "kendall". If shrinkage method is used to estimate PC, the estimator is set 
 correspoinding to the item (c) and (d) in Details: Step 2, respectively.}
 }
 \value{
-A network with rank weighted edges.
+a network matrix
 }
 \description{
 Consensus network is built of taking the average ranks of the edges from multiple network predictions.
