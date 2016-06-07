@@ -1,0 +1,17 @@
+Package: RLowPCor
+Type: Package
+Title: Gene regulatory network construction, refinement and evaluation on large
+    scale gene expression data
+Version: 0.1
+Date: 2016-06-07
+Author: Wenbin Guo <wenbin.guo@hutton.ac.uk>
+Maintainer: Wenbin Guo <wenbin.guo@hutton.ac.uk>
+Description: The package is used to construct, integrate, refine and evaluate
+    gene regulatory networks on large scale gene expression data.
+License: GPL-3
+LazyData: TRUE
+Depends:
+    R (>= 3.2.3),
+    ggplot2,
+    plyr
+RoxygenNote: 5.0.1
