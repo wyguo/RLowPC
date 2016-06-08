@@ -56,3 +56,71 @@ sourceDir('source-2016-01-29')
  adj2rankadj(net2)
  inf.consensus
 ```
+##Example3: table.evaluate function
+```{r,cache=T,include=T,message='hide',warning=F}
+ ##create two random networks
+ library(networkBMA)
+ library(RLowPCor)
+ data(dream4)
+ data.exp<-dream4ts10[[1]][,-c(1:2)]
+ genes<-colnames(data.exp)
+ ref.edge<-dream4gold10[[1]]
+ ref.adj<-edgelist2adjmatrix(ref.edge,genes)
+ inf.cor<-abs(cor(data.exp))
+ diag(inf.cor)<-0
+ table.cor<-table.evaluate(inf.adj = inf.cor,ref.adj = ref.adj)
+ head(table.cor)
+ 
+```
+##Example4: edgelist2adjmatrix function
+```{r,cache=T,include=T,message='hide',warning=F}
+ ##create two random networks
+ library(networkBMA)
+ library(RLowPCor)
+ data(dream4)
+ data.exp<-dream4ts10[[1]][,-c(1:2)]
+ genes<-colnames(data.exp)
+ ref.edge<-dream4gold10[[1]]
+ ref.adj<-edgelist2adjmatrix(ref.edge,genes)
+ ref.adj
+ 
+```
+
+
+##Example5: adjmatrix2edgelist function
+```{r,cache=T,include=T,message='hide',warning=F}
+ ##create two random networks
+ library(networkBMA)
+ library(RLowPCor)
+ data(dream4)
+ data.exp<-dream4ts10[[1]][,-c(1:2)]
+ genes<-colnames(data.exp)
+ inf.cor<-abs(cor(data.exp))
+ diag(inf.cor)<-0
+ adjmatrix2edgelist(inf.cor)
+ 
+```
+
+##Example6: plot.auc function
+```{r,cache=T,include=T,message='hide',warning=F}
+ library(networkBMA)
+ library(RLowPCor)
+ library(minet)
+ data(dream4)
+ data.exp<-dream4ts100[[1]][,-c(1:2)]
+ genes<-colnames(data.exp)
+ ref.edge<-dream4gold100[[1]]
+ ref.adj<-edgelist2adjmatrix(ref.edge,genes)
+ inf.cor<-abs(cor(data.exp))
+ diag(inf.cor)<-0
+ inf.mi<-build.mim(data.exp)
+ inf.clr<-clr(inf.mi)
+ inf.mrnet<-mrnet(inf.mi)
+ table.cor<-table.evaluate(inf.adj = inf.cor,ref.adj = ref.adj)
+ table.mi<-table.evaluate(inf.adj=inf.mi,ref.adj = ref.adj)
+ table.clr<-table.evaluate(inf.adj=inf.clr,ref.adj = ref.adj)
+ table.mrnet<-table.evaluate(inf.adj=inf.mrnet,ref.adj = ref.adj)
+ table.methods<-list(cor=table.cor,mi=table.mi,clr=table.clr,mrnet=table.mrnet)
+
+ 
+```
