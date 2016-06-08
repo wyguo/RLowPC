@@ -13,27 +13,8 @@ table.evaluate(inf.adj, ref.adj, directed = F)
 
 \item{directed}{logical, to compare as directed or undirected networks. In a undirected network, only the upper triangular of the network matrix is used for evaluation.}
 }
-\value{
-a confusion table of TP, FP, TN and FN
-}
 \description{
 The inferred network is evaluated by comparing to the reference network. The output is a tables of TP, FP, TN and FP with different edge weight cut-offs
-}
-\examples{
- library(networkBMA)
- library(RLowPCor)
- ##load DREAM4 size100_1 datasets
- data(dream4)
- data.exp<-dream4ts10[[1]][,-c(1:2)]
- genes<-colnames(data.exp)
- ref.edge<-dream4gold10[[1]]
- ref.adj<-edgelist2adjmatrix(ref.edge,genes)
- inf.cor<-abs(cor(data.exp))
- diag(inf.cor)<-0
- table.cor<-table.evaluate(inf.adj = inf.cor,ref.adj = ref.adj)
- head(table.cor)
-##generate statistical measures
- confusion(table.cor)
 }
 \references{
 Meyer PE, Lafitte F, Bontempi G: minet: A R/Bioconductor package for inferring large transcriptional networks using mutual information.
