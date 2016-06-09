@@ -10,7 +10,7 @@ install_github('wyguo/RLowPCor')
 ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
 
 ##Examples of RLowPCor R package
-###Example1: RLowPCor function
+####Example1: RLowPCor function
 ```{r,cache=T,include=T,message='hide',warning=F,eval=F}
 ##load size 100_1 network DREAM4 datasets
  library(networkBMA)
@@ -25,7 +25,7 @@ ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
 
 ```
 
-###Example2: average.consensus function
+####Example2: average.consensus function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(RLowPCor)
@@ -46,7 +46,7 @@ ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
  inf.consensus
 ```
 
-###Example3: table.evaluate function
+####Example3: table.evaluate function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
@@ -62,7 +62,7 @@ ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
  head(table.cor)
  
 ```
-###Example4: edgelist2adjmatrix function
+####Example4: edgelist2adjmatrix function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
@@ -77,7 +77,7 @@ ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
 ```
 
 
-###Example5: adjmatrix2edgelist function
+####Example5: adjmatrix2edgelist function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
@@ -91,7 +91,7 @@ ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
  
 ```
 
-###Example6: plot.auc function
+####Example6: plot.auc function
 ```{r,cache=T,include=T,message='hide',warning=F}
  library(networkBMA)
  library(RLowPCor)
