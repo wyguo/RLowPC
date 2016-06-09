@@ -6,8 +6,8 @@ To install the package, run the R codes
 library(devtools)
 install_github('wyguo/RLowPCor')
 ```
-##Additional packages used
-ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
+Additional packages used
+ppcor,corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
 
 ##Examples of RLowPCor R package
 ####Example1: RLowPCor function
