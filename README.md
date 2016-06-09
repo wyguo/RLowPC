@@ -10,9 +10,9 @@ install_github('wyguo/RLowPCor')
 ppcor, corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
 
 ##Examples of RLowPCor R package
-##Example1: RLowPCor function
+###Example1: RLowPCor function
 ```{r,cache=T,include=T,message='hide',warning=F,eval=F}
-###load size 100_1 network DREAM4 datasets
+##load size 100_1 network DREAM4 datasets
  library(networkBMA)
  library(RLowPCor)
  data(dream4)
