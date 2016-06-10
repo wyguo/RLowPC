@@ -8,7 +8,7 @@ install_github('wyguo/RLowPCor')
 ```
 Additional packages used
 
-ppcor,corpcor, minet, netbenchmark, networkBMA, ggplot2, gridExtra, plyr
+ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
 
 ##Examples of RLowPCor R package
 ####Example1: RLowPCor function
