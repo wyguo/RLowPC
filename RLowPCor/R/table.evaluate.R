@@ -9,18 +9,6 @@
 #' BMC Bioinformatics 2008, 9:461.
 #' @export
 #' @examples
-#' ##create two random networks
-#' library(networkBMA)
-#' library(RLowPCor)
-#' data(dream4)
-#' data.exp<-dream4ts10[[1]][,-c(1:2)]
-#' genes<-colnames(data.exp)
-#' ref.edge<-dream4gold10[[1]]
-#' ref.adj<-edgelist2adjmatrix(ref.edge,genes)
-#' inf.cor<-abs(cor(data.exp))
-#' diag(inf.cor)<-0
-#' table.cor<-table.evaluate(inf.adj = inf.cor,ref.adj = ref.adj)
-#' head(table.cor)
 
 table.evaluate<-function(inf.adj,ref.adj,directed=F){
   if(directed){
@@ -35,8 +23,6 @@ table.evaluate<-function(inf.adj,ref.adj,directed=F){
     tn.remove<-(ncol(ref.adj)^2-ncol(ref.adj))/2+ncol(ref.adj)
     table.output$tn<-table.output$tn-tn.remove
     table.output<-table.output[table.output$tn>=0,]
-    table.zero<-table.output[table.output$thrsh==0,]
-    table.output<-rbind(table.output[table.output$thrsh>0,],table.zero[1,])
   }
   return(table.output)
 }

@@ -7,7 +7,7 @@
 #' @param edgelist the full edge list used to extract the sub-edge list. First column are regulators, second column are target genes and the last column are weigths of the connections.
 #' @return Sub-edge list
 #' @export
-shared.neighbour<-function(node1, node2, edgelist,verbose=T){
+shared.neighbour<-function(node1, node2, edgelist){
   colnames(edgelist)<-c('from','to','weight')
   sub.edgelist<-edgelist[which(edgelist$to %in% node1 | edgelist$to %in% node2),]
   ##filter the neigbours not shared by node1 and node2
@@ -16,7 +16,7 @@ shared.neighbour<-function(node1, node2, edgelist,verbose=T){
   if(length(filter.gene)!=0){
     sub.edgelist<-sub.edgelist[-which(sub.edgelist[,1] %in% filter.gene),]
   }
-  if(nrow(sub.edgelist)==0 & verbose)
+  if(nrow(sub.edgelist)==0)
     message(paste0("There is no shared neighbour for ",node1," and ", node2))
   return(sub.edgelist)
 }

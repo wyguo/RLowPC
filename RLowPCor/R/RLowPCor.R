@@ -32,7 +32,7 @@
 #' ##infer RLowPCor network
 #' inf.net=RLowPCor(data.exp = data.exp[,-c(1:2)],edgelist = edgelist)
 
-RLowPCor<-function(data.exp,edgelist,estimator='pearson',pc.estimator='shrink',progressbar=T){
+RLowPCor<-function(data.exp,edgelist,estimator='pearson',pc.estimator='shrink'){
   cov2pcor<-function (V)
   {
     ans <- -cov2cor(solve(V))
@@ -42,13 +42,18 @@ RLowPCor<-function(data.exp,edgelist,estimator='pearson',pc.estimator='shrink',p
 
   if(pc.estimator=='shrink'){
     estimator='pearson'
+    cat('\n The shrink PC is estimated with Pearson algorithm. \n')
   }
   colnames(edgelist)<-c('from','to','weight')
-  message(paste0('PC is calculated with estimator: ',estimator, ' and pc.estimator: ', pc.estimator,'...'))
+  if('shrink' %in% pc.estimator){
+    cat('\n PC is calucated by shrink method \n')
+  }
+  if('pc' %in% pc.estimator){
+    cat('\n PC is calcuated using  general method \n')
+  }
 
-  message(paste0('Calculate partial correlation of ', nrow(edgelist), ' pair of nodes ...'))
-  if(progressbar)
-    pb <- txtProgressBar(min = 0, max =nrow(edgelist), style = 3)
+  cat('\n Calculate partial correlation of ', nrow(edgelist), 'pair of nodes ...')
+  pb <- txtProgressBar(min = 0, max =nrow(edgelist), style = 3)
   cor.weight<-vector()
   for(i in 1:nrow(edgelist)){
     Sys.sleep(0)
@@ -66,7 +71,7 @@ RLowPCor<-function(data.exp,edgelist,estimator='pearson',pc.estimator='shrink',p
         sub.edgelist.new<-sub.edgelist[-which(sub.edgelist[,1] %in% filter.gene),]
       }
       sub.genes<-unique(c(as.vector(sub.edgelist.new[,1]),as.vector(sub.edgelist.new[,2])))
-      sub.ts<-data.exp[,sub.genes]
+      sub.ts<-data.exp[,sub.genes][1:210,]
       cov.matrix<-cov(sub.ts,method = estimator)
       if(matrixcalc::is.positive.definite(cov.matrix) & det(cov.matrix) >= .Machine$double.eps){
         inf.pcor<-cov2pcor(cov.matrix)
@@ -89,11 +94,9 @@ RLowPCor<-function(data.exp,edgelist,estimator='pearson',pc.estimator='shrink',p
       }
       cor.weight<-c(cor.weight,inf.pcor[from,to])
     }
-    if(progressbar)
-      setTxtProgressBar(pb,i)
+    setTxtProgressBar(pb,i)
   }
-  if(progressbar)
-    close(pb)
+  close(pb)
   edgelist$cor.weight<-cor.weight
   return(edgelist)
 }

@@ -4,7 +4,7 @@
 \alias{shared.neighbour}
 \title{Extract sub-edge list with shared neihbours}
 \usage{
-shared.neighbour(node1, node2, edgelist, verbose = T)
+shared.neighbour(node1, node2, edgelist)
 }
 \arguments{
 \item{node1}{a character string of the name of candidate node 1}

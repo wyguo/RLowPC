@@ -4,8 +4,7 @@
 \alias{RLowPCor}
 \title{Relevance low order partial correlation}
 \usage{
-RLowPCor(data.exp, edgelist, estimator = "pearson", pc.estimator = "shrink",
-  progressbar = T)
+RLowPCor(data.exp, edgelist, estimator = "pearson", pc.estimator = "shrink")
 }
 \arguments{
 \item{data.exp}{gene expression matrix. Columns are variables and rows are samples.}

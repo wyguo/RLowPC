@@ -13,7 +13,5 @@ LazyData: TRUE
 Depends:
     R (>= 3.2.3),
     ggplot2,
-    plyr,
-    ppcor,
-    corpcor
+    plyr
 RoxygenNote: 5.0.1
