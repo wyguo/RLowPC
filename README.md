@@ -1,5 +1,5 @@
 # RLowPCor
-R function to construct Relevance Low order Partial Correlation gene networks
+R package to construct Relevance Low order Partial Correlation gene networks
 ##Installation
 To install the package, run the R codes
 ```{r}
