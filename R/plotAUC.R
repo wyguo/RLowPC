@@ -65,18 +65,12 @@ plotAUC<-function(table.methods,plot.method=c('auroc','aupr'),roc.lim=c(0,1,0,1)
     pr.frame<-rbind(pr.frame,data.frame(network=names(table.methods)[i],recall=recall,precision=precision))
   }
   plot.f<-list()
-  ###Title of the plots
-  title.roc<-'AUROC'
-  title.pr<-'AUPR'
-  if(roc.lim[2]<1)
-    title.roc<-paste0('p',title.roc)
-  if(pr.lim[2]<1)
-    title.pr<-paste0('p',title.pr)
+
   ###auroc
   if('auroc' %in% plot.method){
     random.data<-data.frame(network='random',fpr=c(roc.lim[1],roc.lim[2]),tpr=c(roc.lim[1],roc.lim[2]))
     f.roc<-ggplot(aes(x=fpr,y=tpr,color=network,group=network),data=roc.frame)+geom_line(...)+theme_bw()+
-      labs(x='FPR',y='TPR',title=title.roc)+
+      labs(x='FPR',y='TPR',title='AUROC')+
       xlim(c(roc.lim[1],roc.lim[2]))+
       ylim(c(roc.lim[3],roc.lim[4]))+
       theme(legend.position='bottom')+
@@ -102,7 +96,7 @@ plotAUC<-function(table.methods,plot.method=c('auroc','aupr'),roc.lim=c(0,1,0,1)
   ###aupr
   if('aupr' %in% plot.method){
     f.pr<-ggplot(aes(x=recall,y=precision,color=network,group=network),data=pr.frame)+geom_line(...)+theme_bw()+
-      labs(x='Recall',y='Precision',title=title.pr)+
+      labs(x='Recall',y='Precision',title='AUPR')+
       xlim(c(pr.lim[1],pr.lim[2]))+
       ylim(c(pr.lim[3],pr.lim[4]))+
       theme(legend.position='bottom')+

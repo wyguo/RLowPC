@@ -16,8 +16,6 @@ firstPCor(adjmatrix, data.exp, method = "pearson", p.quant.prob = 1,
 
 \item{p.quant.prob}{distribution probability of p-value quantile cut-off. It is used to determine which p-value of all the range of p-values for a pair of nodes is selected to determine
 the edge correlation.}
-
-\item{progressbar}{logical. If TRUE, a progressbar will show to indicate the code runing percentage.}
 }
 \value{
 A list includes 3 \code{dataframe} of results. \code{cor} is the results of first order PC assigned to the input adjacency matrix. \code{pval} is the

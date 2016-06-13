@@ -9,10 +9,10 @@ adj2rankadj(adjmatrix, directed = F)
 \arguments{
 \item{adjmatrix}{A network matrix}
 
-\item{directed}{Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the symmetric network matrix is used to calcuate the rank matrix.}
+\item{directed}{Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the matrix is used to calcuate the rank matrix}
 }
 \value{
-A network matrix with rank weightes.
+an network connection rank matrix
 }
 \description{
 Convert network matrix to network rank matrix
