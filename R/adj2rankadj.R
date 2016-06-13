@@ -1,8 +1,8 @@
 #' Convert network matrix to network rank matrix
 #'
 #' @param adjmatrix A network matrix
-#' @param directed Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the matrix is used to calcuate the rank matrix
-#' @return an network connection rank matrix
+#' @param directed Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the symmetric network matrix is used to calcuate the rank matrix.
+#' @return A network matrix with rank weightes.
 #' @export
 adj2rankadj<-function(adjmatrix,directed=F){
   adjmatrix.rank<-adjmatrix-adjmatrix

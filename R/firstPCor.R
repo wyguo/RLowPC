@@ -11,7 +11,7 @@
 #' @param method estimators of correlation. Options are "pearson" and "spearman"
 #' @param p.quant.prob distribution probability of p-value quantile cut-off. It is used to determine which p-value of all the range of p-values for a pair of nodes is selected to determine
 #'  the edge correlation.
-#'
+#' @param progressbar logical. If TRUE, a progressbar will show to indicate the code runing percentage.
 #' @examples
 #'  library(RLowPCor)
 #'  ## load DREAM4 data

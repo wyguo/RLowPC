@@ -9,22 +9,21 @@ adjmatrix2edgelist(adjmatrix, cutoff = 0, directed = F)
 \arguments{
 \item{adjmatrix}{a network matrix}
 
-\item{cutoff}{threshod to cut the edge list}
+\item{cutoff}{threshod to cut the edge weights. Only the edges that pass the threshold will be shown in the output results.}
 
 \item{directed}{logical, if \code{FLASE} the adjmatrix is transformed to symmetric matrix}
 }
 \value{
-a edge list
+A data frame of edge list.
 }
 \description{
-The inferred network matrix is converted to edge list
+Convert the network matrix to edge list, in which the first column contains the regulators and second column presents the target genes. The edge weights are in the second column.
 }
 \examples{
 ##load data
-library(networkBMA)
 library(RLowPCor)
-data(dream4)
-data.exp<-dream4ts10[[1]][,-c(1:2)]
+data(gnwdata)
+data.exp<-gnwdata$size10$ts1[,-c(1:2)]
 genes<-colnames(data.exp)
 ##build correlation network
 inf.cor<-abs(cor(data.exp))

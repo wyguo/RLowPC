@@ -8,19 +8,30 @@ LowPCor(data.exp, p.cut = 0.05, up2 = 2, p.quant.prob = 1,
   method = "pearson", progressbar = T)
 }
 \arguments{
-\item{adjmatrix}{A network matrix}
+\item{data.exp}{gene expression data matrix with genes in columns and samples in rows.}
 
-\item{directed}{Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the matrix is used to calcuate the rank matrix}
+\item{p.cut}{p-value significance threshold for zero, first and second PC.}
+
+\item{up2}{a numeric value to indicate the maximum order for recusive PC calculation. If \code{up2=i, (i=0,1,2)} the ouput results are i order
+PC matrix and corresponding p-value matrix.}
+
+\item{p.quant.prob}{a probability value for pair-wise p-value quantile to choose as the significance metric of different order PC. For example,
+in a \eqn{n} size network there are \eqn{n-2} p-values of first order PC for each pair of nodes. The \code{quantile(q.values,probs=p.quant.prob)} of p-values
+is used as the threshold of signififcane. \code{p.quant.prob=1} present the maximum value of \eqn{n-2} p-values is selected.}
+
+\item{method}{a string character of method used to estimate correlation. Options are "pearson" and "spearman".}
+
+\item{progressbar}{logical. If TRUE, a progressbar will show to indicate the code runing percentage.}
 }
 \value{
-an network connection rank matrix
+A list contains zero, first or secnd order PC matrix, the corresponding p-value matrix and the adjacency matrix after applying \code{p.cut} to the
+p-value matrix.
 }
 \description{
-Calculate up to second order partial correlation (PC).The zero order PC is the general correlation. The first order PC is
-calcualted based on zero PC matrix after applying correlation significance testing. In the zero PC matrix, the less significant edges are
-removed with a p-value cut-off. The second order PC is calcuated based on first order PC matrix after significance testing. For all the combinations of first order
-PC or second order PC of a pair of node, the \code{quantile(p.values,probs=p.quant.prob)} quantile of p-values is selected as the
-Such procedures reduce the computational cost, especially in large scale networks. To use fully connected network to calculate the first and second order PC,
-users can set the p-value cut-off to \code{p.cut=1.1}.
+Calculate up to second order partial correlation (PC) as shown in paper [1]. A pair of nodes are connected if the
+zero order (general correlation), all first order and all second order PC are significantly different to zero.
+}
+\references{
+1. Zuo Y, Yu G, Tadesse MG, Ressom HW: Biological network inference using low order partial correlation. Methods (San Diego, Calif) 2014, 69(3):266-273.
 }
 
