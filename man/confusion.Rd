@@ -10,10 +10,10 @@ confusion(input.table)
 \item{input.table}{the output confusion table from \code{\link{table.evaluate}}}
 }
 \value{
-a table of of statistical measures of performance, see Details.
+A data frame of measures of performance, see Details.
 }
 \description{
-Calculate statistical measures of the performance of binary classification test from the output confusion matrix \code{\link{table.evaluate}}
+Calculate statistical measures of the performance of binary classification [1] calculated from the output of confusion matrix \code{\link{table.evaluate}}
 }
 \details{
 true positive: \eqn{tp}; false positive: \eqn{fp}; true negative: \eqn{tn}; false negative: \eqn{fn};\cr
@@ -26,6 +26,6 @@ f1 scaore: \eqn{f1=\frac{2tp}{2tp+fp+fn}}; \cr
 Matthews correlation coefficient: \deqn{mcc=\frac{tp\times tn-fp\times fn}{\sqrt{(tp+fp)\times (tp+fn)\times (tn+fp)\times (tn+fn)}}}
 }
 \references{
-Powers DMW: Evaluation: From Precision, Recall and F-Factor to ROC, Informedness, Markedness & Correlation. In. Adelaide, Australia; 2007.
+1. Powers DMW: Evaluation: From Precision, Recall and F-Factor to ROC, Informedness, Markedness & Correlation. In. Adelaide, Australia; 2007.
 }
 

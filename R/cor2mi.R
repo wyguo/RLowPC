@@ -1,6 +1,6 @@
 #' Convert correlation matrix to MI matrix
 #'
-#' The correlation \eqn{\rho_{ij}} between node \eqn{i} and \eqn{j} is converted into MI by using equation [1]:
+#' The correlation \eqn{\rho_{ij}} between node \eqn{i} and \eqn{j} is converted into mutual information (MI) matrix by using equation [1]:
 #' \deqn{MI=-\frac{1}{2} (1-\rho_{ij}^2)}.
 #'
 #' @param cor.adj a correlation matrix

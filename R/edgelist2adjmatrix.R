@@ -2,9 +2,9 @@
 #'
 #' The function is to convert edge list to network matrix.
 #'
-#' @param edgelist a edge list of network
-#' @param genes gene names
-#' @param directed logical, to create directed or undirected network matrix
+#' @param edgelist a data frame of edge list of a network, in which columns are regulators, targets and edge weights.
+#' @param genes gene names to name the rows and columns of the output network matrix.
+#' @param directed logical, to create directed or undirected () network matrix.
 #' @param cutoff the threshold to cut the edge list
 #' @return a network matrix
 #' @export

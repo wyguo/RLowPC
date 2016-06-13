@@ -2,20 +2,20 @@
 % Please edit documentation in R/average.consensus.R
 \name{average.consensus}
 \alias{average.consensus}
-\title{Consensus network from average rank}
+\title{Consensus network integrated from average edge ranks}
 \usage{
 average.consensus(adjmatrix.list, directed = F)
 }
 \arguments{
-\item{adjmatrix.list}{A list of network prediciton matrices with same rownames and colnames.}
+\item{adjmatrix.list}{a list of inferred network matrices with same rownames and colnames.Names of the network matrices must be given in the list.}
 
-\item{directed}{Logical. If TRUE, the networkis considered as directed. If FALSE, the upper triangular part of the matrix is used to calcuate the rank matrix}
+\item{directed}{logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the symmetric matrix is used to calculate the rank matrix}
 }
 \value{
-a network with rank weighted edges. The weights are rescale to 0-1 and hihger values indicate higher ranks.
+A network with rank weighted edges. The weights are rescale to 0-1 and hihger values indicate higher ranks.
 }
 \description{
-Consensus network is built of taking the average ranks of the edges from multiple network predictions.
+Consensus network is built from taking the average ranks of the edges from multiple network predictions.
 }
 \examples{
 ##create two random networks

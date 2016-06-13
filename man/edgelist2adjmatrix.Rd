@@ -7,13 +7,13 @@
 edgelist2adjmatrix(edgelist, genes, cutoff = 0, directed = F)
 }
 \arguments{
-\item{edgelist}{a edge list of network}
+\item{edgelist}{a data frame of edge list of a network, in which columns are regulators, targets and edge weights.}
 
-\item{genes}{gene names}
+\item{genes}{gene names to name the rows and columns of the output network matrix.}
 
 \item{cutoff}{the threshold to cut the edge list}
 
-\item{directed}{logical, to create directed or undirected network matrix}
+\item{directed}{logical, to create directed or undirected () network matrix.}
 }
 \value{
 a network matrix
