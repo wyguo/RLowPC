@@ -1,35 +1,26 @@
-# RLowPCor
+# RLowPC
 R package to construct Relevance Low order Partial Correlation gene networks
 ##Installation
 To install the package, run the R codes
 ```{r}
 library(devtools)
-install_github('wyguo/RLowPCor')
+install_github('wyguo/RLowPC')
 ```
 Additional packages used
 
-ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
+ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, fdrtool
 
-##Examples of RLowPCor R package
-####Example1: RLowPCor function
+##Examples of RLowPC R package
+####Example1: RLowPC function
 ```{r,cache=T,include=T,message='hide',warning=F,eval=F}
-##load size 100_1 network DREAM4 datasets
- library(networkBMA)
- library(RLowPCor)
- data(dream4)
- data.exp<-dream4ts100[[1]]
- #create edge list
- edgelist<-dream4gold100[[1]]
- edgelist<-edgelist[edgelist[,3]>0,]
- ##infer RLowPCor network
- inf.net=RLowPCor(data.exp = data.exp[,-c(1:2)],edgelist = edgelist)
+
 
 ```
 
 ####Example2: average.consensus function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
- library(RLowPCor)
+ library(RLowPC)
  set.seed(4)
  net1<-abs(matrix(rnorm(16),4,4))
  net1<-pmax(net1,t(net1))
@@ -51,7 +42,7 @@ ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
- library(RLowPCor)
+ library(RLowPC)
  data(dream4)
  data.exp<-dream4ts10[[1]][,-c(1:2)]
  genes<-colnames(data.exp)
@@ -67,7 +58,7 @@ ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
- library(RLowPCor)
+ library(RLowPC)
  data(dream4)
  data.exp<-dream4ts10[[1]][,-c(1:2)]
  genes<-colnames(data.exp)
@@ -82,7 +73,7 @@ ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(networkBMA)
- library(RLowPCor)
+ library(RLowPC)
  data(dream4)
  data.exp<-dream4ts10[[1]][,-c(1:2)]
  genes<-colnames(data.exp)
@@ -95,7 +86,7 @@ ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, Hmisc
 ####Example6: plot.auc function
 ```{r,cache=T,include=T,message='hide',warning=F}
  library(networkBMA)
- library(RLowPCor)
+ library(RLowPC)
  library(minet)
  data(dream4)
  data.exp<-dream4ts100[[1]][,-c(1:2)]
