@@ -2,7 +2,7 @@
 % Please edit documentation in R/node.degree.R
 \name{node.degree}
 \alias{node.degree}
-\title{Calculate node degree of gene network}
+\title{Calculate degree of nodes in gene networks}
 \usage{
 node.degree(net, directed = F)
 }
@@ -15,6 +15,6 @@ node.degree(net, directed = F)
 a vector of node degrees
 }
 \description{
-Calculate node degree of gene network
+Calculate degree of nodes in gene networks
 }
 

@@ -1,14 +1,14 @@
 #' Consensus network integrated from average edge ranks
 #'
-#' Consensus network is built from taking the average ranks of the edges from multiple network predictions.
+#' Consensus network is built from taking the average ranks of the edges in multiple network predictions.
 #'
-#' @param adjmatrix.list a list of inferred network matrices with same rownames and colnames.Names of the network matrices must be given in the list.
+#' @param adjmatrix.list a list of inferred network matrices with same row and column ordering.
 #' @param directed logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the symmetric matrix is used to calculate the rank matrix
-#' @return A network with rank weighted edges. The weights are rescale to 0-1 and hihger values indicate higher ranks.
+#' @return \code{average.consensus} returns a network with rank average edge ranks. The weights are rescaled to 0-1 and hihger values indicate higher ranks.
 #' @export
 #' @examples
 #' ##create two random networks
-#' library(RLowPCor)
+#' library(RLowPC)
 #' set.seed(4)
 #' net1<-abs(matrix(rnorm(16),4,4))
 #' net1<-pmax(net1,t(net1))

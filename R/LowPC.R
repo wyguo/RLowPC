@@ -1,0 +1,71 @@
+#' Low order partial correlation
+#'
+#' Calculate the low order PC as shown in paper [1].
+#' @details
+#' Zero order PC (correlation) is firstly computed. The significant edges in zero order PC network are
+#' used to calcuate first order PC. After that, the significant edges in first order PC are used to calculate second order PC. Instead of regressing all the remained genes one by one or
+#' pair by pair, the calculation of first and second PC only based on the subset of edges that significantly connect to the genes, which greatly reduces the computational cost compared to the
+#' paper [1]. For example, in a network with \eqn{n} genes, the first order PC between gene \eqn{i} and \eqn{j} is calculated by removing \eqn{m} shared genes, which significantly connect to \eqn{i} and
+#' \eqn{j}, one by one rather than all the \eqn{n-2} remained genes (\eqn{m<n-2}). If a pair of genes do not connect to the same set of genes,
+#' the correlation between them is represeted as correlation, while if they connected only one shared gene, the edge connection is weighted as
+#' first order PC. The correlation significance is estimated using R package \code{\link{fdrtool}}.
+#' @param data.exp gene expression data matrix with genes in columns and samples in rows.
+#' @param cutoff a cut-off of p-values or conenction proabibility.
+#' @param cutat a string indicates to cut the results at p-value "pval" or probability "prob" with a threshold \code{cutoff}.
+#' @param method a string character of method used to estimate correlation. Options are "pearson", "spearman" and "kendall".
+#' @param progressbar logical. If TRUE, a progressbar will show to indicate the code runing percentage.
+#' @seealso \code{\link{zeroPC}}, \code{\link{firstPC}}, \code{\link{secondPC}}, \code{\link{RLowPC}} and \code{\link{cor2statistics}}.
+#' @references
+#' 1. Zuo Y, Yu G, Tadesse MG, Ressom HW: Biological network inference using low order partial correlation. Methods (San Diego, Calif) 2014, 69(3):266-273.
+#'
+#' @return \code{LowPC} returns a list includes the results of zero order PC, first order PC and second order PC.
+#' @export
+
+
+LowPC<-function(data.exp,cutoff=0.05,cutat='pval',method='pearson',progressbar=T){
+  t1 <- Sys.time()
+  options(warn =-1)
+  ##zero order PC
+  genes<-colnames(data.exp)
+  inf.zeroPC<-zeroPC(data.exp = data.exp,method = method)
+  if(cutat=='pval')
+    inf.edge<-inf.zeroPC[inf.zeroPC[,cutat]<cutoff,]
+  if(cutat=='prob')
+    inf.edge<-inf.zeroPC[inf.zeroPC[,cutat]>cutoff,]
+  rownames(inf.edge)<-NULL
+  inf.edge<-inf.edge[,1:3]
+  ##first order PC
+  #controlist<-sapply(data.frame(replicate(nrow(inf.edge),genes)),function(x) list(as.vector(x)))
+  controlist<-NULL
+  message(paste0('Calulate first order partial correlation for ',nrow(inf.edge),' pairs of genes ...'))
+  if(dim(inf.edge)[1]!=0){
+    inf.firstPC<-suppressMessages(
+      firstPC(data.exp = data.exp,edgelist = inf.edge,controlist = controlist,method = method,progressbar=progressbar))
+    } else {
+      results<-list(zeroPC=inf.zeroPC,firstPC=NULL,secondPC=NULL)
+      message('Warnings: No LowPC networks.')
+      return(results)
+    }
+
+  ##second order PC
+  if(cutat=='pval')
+    inf.edge<-inf.firstPC[inf.firstPC[,cutat]<cutoff,]
+  if(cutat=='prob')
+    inf.edge<-inf.firstPC[inf.firstPC[,cutat]>cutoff,]
+  rownames(inf.edge)<-NULL
+  inf.edge<-inf.edge[,1:3]
+
+  #controlist<-sapply(data.frame(replicate(nrow(inf.edge),genes)),function(x) list(as.vector(x)))
+  message(paste0('Calulate second order partial correlation for ',nrow(inf.edge),' pairs of genes ...'))
+  if(dim(inf.edge)[1]!=0){
+    inf.secondPC<-suppressMessages(
+      secondPC(data.exp = data.exp,edgelist = inf.edge,controlist = controlist, method = method,progressbar=progressbar))
+  } else {
+    inf.secondPC=NULL
+  }
+  results<-list(zeroPC=inf.zeroPC,firstPC=inf.firstPC,secondPC=inf.secondPC)
+  t2 <- Sys.time()
+  message(paste0('Done! Time taken:',round(as.numeric(difftime(t2,t1)),4),' ',units(difftime(t2,t1))))
+  return(results)
+}
+

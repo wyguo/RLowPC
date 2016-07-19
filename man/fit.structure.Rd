@@ -2,33 +2,31 @@
 % Please edit documentation in R/fit.structure.R
 \name{fit.structure}
 \alias{fit.structure}
-\title{Calculate structural fitness of sub-networks}
+\title{Calculate structural fitness of networks}
 \usage{
-fit.structure(net, top.vector, method = "scale-free")
+fit.structure(edgelist, method = "scale-free")
 }
 \arguments{
-\item{net}{a network matrix or data frame of edge list.}
+\item{edgelist}{a data frame of network edge list, with regulators in first column, target genes in second column and edge weights in third column.}
 
-\item{top.vector}{a numeric vector of top weighted edge number, e.g. \code{top.vector=seq(100,500,by=10)}.}
-
-\item{method}{a character string used to calculate the structural fitness. Options are "scale-free" and "modularity"}
+\item{method}{a character string used to calculate the structural fitness. Options are "scale-free" and "modularity".}
 }
 \value{
-a vector of fitness
+\code{fit.structure} returns a numeric value measures the structural fitness.
 }
 \description{
-The function is to used to calcuate the scale-free or modularity fitness of top weighted sub-networks.The scale-free fitness is calcuated as
+The function is to used to calcuate the scale-free or modularity fitness of networks. The scale-free fitness is calcuated as
 \eqn{-R^2\times slope} of the fit index of the model. Please refer to the package \code{\link[WGCNA]{WGCNA}} [1,2] for details.The fitness of modularity is computed
 using \code{\link[igraph]{igraph}} package [3].
 }
 \examples{
-library(networkBMA)
-library(RLowPCor)
-library(minet)
-data(dream4)
-ref.edge<-dream4gold100[[1]]
-top.vector<-seq(100,300,by=10)
-top.network(ref.edge,top.vector=top.vector,method='scale-free')
+ library(RLowPC)
+ data(gnwdata)
+ edgelist<-gnwdata$size500$net1
+ edgelist[,3]<-1
+ fit.structure(edgelist,method='scale-free')
+ fit.structure(edgelist,method='modularity')
+
 }
 \references{
 [1] Langfelder P, Horvath S: WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics 2008, 9:559.

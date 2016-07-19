@@ -1,19 +1,18 @@
-Package: RLowPCor
+Package: RLowPC
 Type: Package
-Title: Gene regulatory network construction, refinement and evaluation on large
-    scale gene expression data
+Title: Inference of co-expression gene network using relevance low order partial correlation from large scale expression data
 Version: 0.1
-Date: 2016-06-07
+Date: 2016-07-12
 Author: Wenbin Guo <wenbin.guo@hutton.ac.uk>
 Maintainer: Wenbin Guo <wenbin.guo@hutton.ac.uk>
-Description: The package is used to construct, integrate, refine and evaluate
-    gene regulatory networks on large scale gene expression data.
+Description: This package is used to infer and evaluate first order, secnod order, low order and relevace low ordr partial correlation (RLowPC) from large scale gene expression data.
+  For each pair of genes, the general partial correlation is calculated by removing all the remained controls. However, in large network a number of remained controls may
+  not truely connect to the pair of genes, which are inrrelevant controls. To increase the precision of network predictions, we use RLowPC method to calculated partial
+  correlation by only removing the more relevant controls.
 License: GPL-3
 LazyData: TRUE
 Depends:
-    R (>= 3.2.3),
-    ggplot2,
-    plyr,
-    ppcor,
-    corpcor
+    R (>= 3.2.3)
 RoxygenNote: 5.0.1
+
+

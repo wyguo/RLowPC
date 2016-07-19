@@ -9,16 +9,16 @@ table.cut(input.table, cutoff = 1000, cutat = "top")
 \arguments{
 \item{input.table}{the confusion table output from \link{table.evalution}.}
 
-\item{cutoff}{the cutoff threshold for top weighted edges, fpr or tpr.}
+\item{cutoff}{a numeric value of threshold for "top", "fpr" or "tpr".}
 
-\item{cutat}{the options are "top", "fpr" and "tpr", which indicate to cut the confusion table at top weighted edges, fpr or tpr.}
+\item{cutat}{the options are "top", "fpr" and "tpr", which indicate to cut the confusion table at top weighted edges, FPR or TPR.}
 }
 \value{
-a list of results cantains the cut table, the pAUROC value, pAUPR value, precesion for the remained edges, the corresponding top, fpr, tpr cutoffs
+\code{table.cut} returns a list of results cantains the table after applying cutoff, the pAUROC value, pAUPR value, precesion for the remained edges, the corresponding top, fpr, tpr cutoffs
 and the statistical measures after applying function \link{confusion}.
 }
 \description{
-A top weighted edge, fpr or tpr threshod is used to cut the confusion table output from \link{table.evaluation}. The provided \code{cutoff}.
-threshold must match to the scales of the \code{cutat} metrices.
+The confusion table output from \code{\link{table.evaluate}} is cut at a threshold of top weighted edges, FPR or TPR. The \code{cutoff} in the function must match
+to the \code{cutat} metrices.
 }
 

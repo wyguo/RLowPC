@@ -1,4 +1,4 @@
-#' Calculate node degree of gene network
+#' Calculate degree of nodes in gene networks
 #'
 #' @param net input network matrix or edge list with three columns, i.e. regulators, targets and weights.
 #' @param directed logical, if \code{FALSE}, the input network is treated as undirected.

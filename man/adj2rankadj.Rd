@@ -12,9 +12,9 @@ adj2rankadj(adjmatrix, directed = F)
 \item{directed}{Logical. If TRUE, the network is considered as directed. If FALSE, the upper triangular part of the symmetric network matrix is used to calcuate the rank matrix.}
 }
 \value{
-A network matrix with rank weightes.
+\code{adj2rankadj} returns a network matrix with ranks of the edge weightes.
 }
 \description{
-Convert network matrix to network rank matrix
+The edge weights in the network matrix will be converted to their ranks. A high rank value indcates a high edge connection.
 }
 

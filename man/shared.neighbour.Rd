@@ -2,21 +2,21 @@
 % Please edit documentation in R/shared.neighbour.R
 \name{shared.neighbour}
 \alias{shared.neighbour}
-\title{Extract sub-edge list with shared neihbours}
+\title{Extract shared neihbour genes}
 \usage{
 shared.neighbour(node1, node2, edgelist, verbose = T)
 }
 \arguments{
-\item{node1}{a character string of the name of candidate node 1}
+\item{node1}{a character string of the name of candidate node 1.}
 
-\item{node2}{a character string of the name of candidate node 2}
+\item{node2}{a character string of the name of candidate node 2.}
 
-\item{edgelist}{the full edge list used to extract the sub-edge list. First column are regulators, second column are target genes and the last column are weigths of the connections.}
+\item{edgelist}{the edge list of a network from which the neighbour genes are extracted for node1 and node2.}
 }
 \value{
-Sub-edge list
+\code{shared.neighbour} returns a sub edgelist.
 }
 \description{
-The function is used to extract the shared neighbours that both connect to a pair of candidate nodes.
+The function is used to extract the shared neighbour genes that both connect to a pair of candidate nodes.
 }
 

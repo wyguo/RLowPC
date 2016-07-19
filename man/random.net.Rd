@@ -2,24 +2,27 @@
 % Please edit documentation in R/random.net.R
 \name{random.net}
 \alias{random.net}
-\title{Generate random network}
+\title{Resort datasets and generate random networks}
 \usage{
-random.net(input, nblock, from = "data", directed = F)
+random.net(input, nexp = NA, type = "data", directed = F)
 }
 \arguments{
-\item{input}{a gene expression \code{dataframe} with variables in columns and samples in rows or a vector of node names.}
+\item{input}{a gene expression data frame or a string vector of gene names.}
 
-\item{nblock}{a numeric number to indicate how many blocks that consist the datasets. For example, to tell how many replicates or experiments are in the datasets.
-The datasets to generate random network will be resorted in block-wise.}
+\item{nexp}{a numeric number to indicate how many experiments in the datasets. The gene expression datasets are resorted in both experiment-wise and gene-wise.}
 
-\item{from}{a character string to tell the random network generation is based on nodes size or dataset.Options are "node" and "data".}
+\item{type}{a character string to indicate the resort datasets ("data") or to generate random networks ("network").}
 
-\item{directed}{logical, if \code{FALSE}, the random network generated from nodes will be converted to symmetric matrix.}
+\item{directed}{logical, if \code{FALSE}, the random network generated from gene names will be converted to symmetric matrix.}
 }
 \value{
-The resorted datasets if \code{from='data'} or a random network matrix, the edge weights of which are in \eqn{[0,1]} if \code{from='node'}.
+\code{random.net} returns a randomly resorted expression data frame or a random network matrix.
 }
 \description{
-Random networks are generated from node size or from resort odering of samples in gene expression dataset.
+The function is used to generate random datasets or random networks
+}
+\details{
+(a) Input a gene expression data frame with genes in columns and samples in rows, the function resorts the sample points for each genes in each experiments.
+(b) Input a string vector of gene names, the function generates random network with random edge weightes.
 }
 

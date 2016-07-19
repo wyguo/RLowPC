@@ -4,17 +4,18 @@
 \alias{cor2mi}
 \title{Convert correlation matrix to MI matrix}
 \usage{
-cor2mi(cor.adj)
+cor2mi(x)
 }
 \arguments{
-\item{cor.adj}{a correlation matrix}
+\item{x}{a correlation matrix}
 }
 \value{
-A mutual information matrix
+\code{cor2mi} returns a mutual information matrix.
 }
 \description{
 The correlation \eqn{\rho_{ij}} between node \eqn{i} and \eqn{j} is converted into mutual information (MI) matrix by using equation [1]:
-\deqn{MI=-\frac{1}{2} (1-\rho_{ij}^2)}.
+\deqn{MI=-\frac{1}{2} (1-\rho_{ij}^2)}
+if the observation data is normal distributed.
 }
 \references{
 [1] Meyer PE, Kontos K, Lafitte F, Bontempi G: Information-theoretic inference of large transcriptional

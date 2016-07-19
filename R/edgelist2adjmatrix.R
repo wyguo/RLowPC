@@ -4,19 +4,19 @@
 #'
 #' @param edgelist a data frame of edge list of a network, in which columns are regulators, targets and edge weights.
 #' @param genes gene names to name the rows and columns of the output network matrix.
-#' @param directed logical, to create directed or undirected () network matrix.
-#' @param cutoff the threshold to cut the edge list
-#' @return a network matrix
+#' @param directed logical, to create directed or undirected (symmetric) network matrix.
+#' @param cutoff the threshold to cut the edge list.
+#' @return \code{edgelist2adjmatrix} returns a network matrix.
 #' @export
 #' @examples
-#'  library(networkBMA)
-#'  library(RLowPCor)
-#'  ##load DREAM4 size100_1 datasets
-#'  data(dream4)
-#'  data.exp<-dream4ts10[[1]][,-c(1:2)]
-#'  genes<-colnames(data.exp)
-#'  ref.edge<-dream4gold10[[1]]
-#'  ref.adj<-edgelist2adjmatrix(ref.edge,genes)
+#' ##load data
+#' library(RLowPC)
+#' data(gnwdata)
+#' data.exp<-gnwdata$size100$ts1[,-c(1:3)]
+#' genes<-colnames(data.exp)
+#' ref.edge<-gnwdata$size100$net1
+#' ref.edge[,3]<-1
+#' ref.adj<-edgelist2adjmatrix(ref.edge,genes,directed=F)
 
 edgelist2adjmatrix<-function(edgelist,genes,cutoff=0,directed=F){
   colnames(edgelist)<-c('from','to','weight')

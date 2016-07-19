@@ -4,42 +4,53 @@
 \alias{plotAUC}
 \title{Plot AUC curves}
 \usage{
-plotAUC(table.methods, plot.method = c("auroc", "aupr"), roc.lim = c(0, 1,
-  0, 1), pr.lim = c(0, 1, 0, 1), fill = F, color = NA, ...)
+plotAUC(table.methods, plot.method = c("auroc", "aupr", "top.precision",
+  "fpr.precision"), roc.lim = c(0, 1, 0, 1), pr.lim = c(0, 1, 0, 1),
+  top.precision.lim = c(0, 1000, 0, 1), fpr.precision.lim = c(0, 1, 0, 1),
+  fill = F, color = NA, plot.ncol = 2, ...)
 }
 \arguments{
-\item{table.methods}{a confusion table list of multiple methods, which are from the output of \code{\link{table.evalution}}. The names of the list will be used
+\item{table.methods}{a list of confusion tables of comparison for multiple networks to the same reference network. The tables are the outputs of \code{\link{table.evalution}}.
+The names of the list \code{names(table.methods)} will be used
 to plot the legend of the curves.}
 
-\item{plot.method}{a character string indicates to plot "auroc" or "aupr" curves.}
+\item{plot.method}{a character string indicates to plot AUROC ("auroc"), AUPR ("aupr"), precision vs top weighted edges ("top.precision") or
+precision vs false positive rate ("fpr.precision") curves.}
 
-\item{roc.lim}{a vector to tell the plot limits, i.e. xmin,xmax,ymin,ymax, of AUROC curves.}
+\item{roc.lim}{a vector to specify the plot limits, i.e. xmin, xmax, ymin and ymax of AUROC curves.}
 
-\item{pr.lim}{a vector to tell the plot limits, i.e. xmin,xmax,ymin,ymax, of AUPR curves.}
+\item{pr.lim}{a vector to specify the plot limits, i.e. xmin, xmax, ymin and ymax of AUPR curves.}
+
+\item{top.precision.lim}{a vector to specify the plot limits, i.e. xmin, xmax, ymin and ymax of precision vs top weighted edges curves.}
+
+\item{fpr.precision.lim}{a vector to specify the plot limits, i.e. xmin, xmax, ymin and ymax of precision vs false positive rate curves.}
 
 \item{fill}{logical. If TRUE, the area under the curvers will be filled with colors.}
+
+\item{color}{a color string vectors to specify the colors for the curves.}
+
+\item{plot.ncol}{the number of columns of the layout of mutliple plots.}
+
+\item{...}{additional options for \code{geom_line(...)}.}
 }
 \value{
-Plots.
+\code{plotAUC} returns plots.
 }
 \description{
 The function is used to plot AUROC, AUPR, pAUROC and pAUPR curves.
 }
-\details{
-The fpr or recall cutoffs to make pAUROC or pAUPR curves can be generate from the funciton \code{\link{confusion}} and specify in \code{roc.lim} and \code{pr.lim}
-}
 \examples{
 ##load librarys
-library(networkBMA)
-library(RLowPCor)
+library(RLowPC)
 library(minet)
-library(gridEXtra)
-library(gglot2)
+library(gridExtra)
+library(ggplot2)
 ##get dream4 datasets
-data(dream4)
-data.exp<-dream4ts100[[1]][,-c(1:2)]
+data(gnwdata)
+data.exp<-gnwdata$size100$ts1[,-c(1:3)]
 genes<-colnames(data.exp)
-ref.edge<-dream4gold100[[1]]
+ref.edge<-gnwdata$size100$net1
+ref.edge[,3]<-1
 ref.adj<-edgelist2adjmatrix(ref.edge,genes)
 ##infer gene networks
 inf.cor<-abs(cor(data.exp))
@@ -54,7 +65,7 @@ table.clr<-table.evaluate(inf.adj=inf.clr,ref.adj = ref.adj)
 table.mrnet<-table.evaluate(inf.adj=inf.mrnet,ref.adj = ref.adj)
 ##put confusion tables into list, and set names as the methods
 table.methods<-list(cor=table.cor,mi=table.mi,clr=table.clr,mrnet=table.mrnet)
-plotAUC(table.methods,plot.method = 'auroc',roc.lim = c(0,0.5,0,1))
+plotAUC(table.methods,fill=T,lwd=1)
 
 }
 

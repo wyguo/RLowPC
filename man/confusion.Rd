@@ -7,19 +7,19 @@
 confusion(input.table)
 }
 \arguments{
-\item{input.table}{the output confusion table from \code{\link{table.evaluate}}}
+\item{input.table}{the output confusion table from \code{\link{table.evaluate}}.}
 }
 \value{
-A data frame of measures of performance, see Details.
+\code{confusion} returns a data frame of measures of performance, see Details.
 }
 \description{
-Calculate statistical measures of the performance of binary classification [1] calculated from the output of confusion matrix \code{\link{table.evaluate}}
+Calculate statistical measures of the performance of binary classification [1] from the output of confusion matrix in \code{\link{table.evaluate}}.
 }
 \details{
 true positive: \eqn{tp}; false positive: \eqn{fp}; true negative: \eqn{tn}; false negative: \eqn{fn};\cr
 positives in reference network: \eqn{p}; negatives in reference network: \eqn{n};\cr
 true positive rate: \eqn{tpr=recall=\frac{tp}{tp+fn}}; false positive rate: \eqn{fpr=\frac{fp}{fp+tn}}; \cr
-true negative rate: \eqn{tnr=\frac{tn}{tn+fp}}; false negative rate: \eqn{fpr=\frac{fn}{fn+tp}};\cr
+true negative rate: \eqn{tnr=\frac{tn}{tn+fp}}; false negative rate: \eqn{fnr=\frac{fn}{fn+tp}};\cr
 precision: \eqn{precision=\frac{tp}{tp+fp}}; negative predictive value: \eqn{npv=\frac{tn}{tn+fn}};\cr
 false discovery rate: \eqn{fdr=\frac{fp}{fp+tp}}; accuracy: \eqn{accuracy=\frac{tp+tn}{p+n}};\cr
 f1 scaore: \eqn{f1=\frac{2tp}{2tp+fp+fn}}; \cr

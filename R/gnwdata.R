@@ -1,9 +1,9 @@
-#' DREAM4 and GeneNetWeaver simulated datasets
+#' Synthetic data sources simulated using GeneNetWeaver
 #'
-#' The datasets are downloaded from DREAM4 challenge (\url{https://www.synapse.org/#!Synapse:syn3049712/wiki/74630}), including size
-#' 10 and size 100 time-series datasets and the corresponding refernece networks.
-#' Size 10 datasets include 5 topologies and 5 experiment simulations while size 100 datasets include 5 topologies and 10 experiment
-#' simulations. The details of the data can be seen in paper[1,2].
+#' The sources include time-series composed of 1 perturbation x 5 experiments x 3 replicates for GNW100 and GNW500 networks, respectively. GNW100 includes 5 \emph{In Silico} network structures with 100 genes used in DREAM4 challenge
+#' while GNW500 includes 5 network structures with 500 genes which are subsets of \emph{E.coli} source network in GeneNetweaver. Each time course is sampled at 21 time points.
+#' In each experiment, one third of genes are randomly selcted and perturbed from steady states at initial time point and the perturbations are
+#' removed at half time duration. Biological and technical noises are added to the datasets according to the settings in DREAM4 challenge [1,2].
 #'
 #' @docType data
 #'
@@ -20,11 +20,8 @@
 #' [2] Marbach D, Prill RJ, Schaffter T, Mattiussi C, Floreano D, Stolovitzky G: Revealing strengths and weaknesses of methods
 #' for gene network inference. Proceedings of the National Academy of Sciences 2010, 107(14):6286-6291.
 #'
-#' @source \url{https://www.synapse.org/#!Synapse:syn3049712/wiki/74628}
-#'
 #' @examples
 #' data(gnwdata)
-#' data.exp<-gnwdata$size10$ts1
-#' ref.edge<-gnwdata$size10$net1
+#' sapply(gnwdata,names)
 
 "gnwdata"

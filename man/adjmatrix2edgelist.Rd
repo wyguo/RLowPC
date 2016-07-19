@@ -4,26 +4,28 @@
 \alias{adjmatrix2edgelist}
 \title{Convert network matrix to edge list}
 \usage{
-adjmatrix2edgelist(adjmatrix, cutoff = 0, directed = F)
+adjmatrix2edgelist(adjmatrix, cutoff = 0, directed = F, order = T)
 }
 \arguments{
 \item{adjmatrix}{a network matrix}
 
 \item{cutoff}{threshod to cut the edge weights. Only the edges that pass the threshold will be shown in the output results.}
 
-\item{directed}{logical, if \code{FLASE} the adjmatrix is transformed to symmetric matrix}
+\item{directed}{logical, if \code{FLASE} the adjmatrix is transformed to symmetric matrix and the upper triangular part of the matrix is used to generate the edge list.}
+
+\item{order}{logical, to order the edgelist according the edge weightes or not.}
 }
 \value{
-A data frame of edge list.
+\code{adjmatrix2edgelist} returns a data frame of edge list.
 }
 \description{
-Convert the network matrix to edge list, in which the first column contains the regulators and second column presents the target genes. The edge weights are in the second column.
+Convert the network matrix to edge list, in which the first column contains the regulators, the second column presents the target genes and edge weights are in the third column.
 }
 \examples{
 ##load data
-library(RLowPCor)
+library(RLowPC)
 data(gnwdata)
-data.exp<-gnwdata$size10$ts1[,-c(1:2)]
+data.exp<-gnwdata$size100$ts1[,-c(1:3)]
 genes<-colnames(data.exp)
 ##build correlation network
 inf.cor<-abs(cor(data.exp))

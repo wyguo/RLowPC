@@ -11,24 +11,24 @@ edgelist2adjmatrix(edgelist, genes, cutoff = 0, directed = F)
 
 \item{genes}{gene names to name the rows and columns of the output network matrix.}
 
-\item{cutoff}{the threshold to cut the edge list}
+\item{cutoff}{the threshold to cut the edge list.}
 
-\item{directed}{logical, to create directed or undirected () network matrix.}
+\item{directed}{logical, to create directed or undirected (symmetric) network matrix.}
 }
 \value{
-a network matrix
+\code{edgelist2adjmatrix} returns a network matrix.
 }
 \description{
 The function is to convert edge list to network matrix.
 }
 \examples{
- library(networkBMA)
- library(RLowPCor)
- ##load DREAM4 size100_1 datasets
- data(dream4)
- data.exp<-dream4ts10[[1]][,-c(1:2)]
- genes<-colnames(data.exp)
- ref.edge<-dream4gold10[[1]]
- ref.adj<-edgelist2adjmatrix(ref.edge,genes)
+##load data
+library(RLowPC)
+data(gnwdata)
+data.exp<-gnwdata$size100$ts1[,-c(1:3)]
+genes<-colnames(data.exp)
+ref.edge<-gnwdata$size100$net1
+ref.edge[,3]<-1
+ref.adj<-edgelist2adjmatrix(ref.edge,genes,directed=F)
 }
 

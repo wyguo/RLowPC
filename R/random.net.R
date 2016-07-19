@@ -1,23 +1,28 @@
-#' Generate random network
+#' Resort datasets and generate random networks
 #'
-#' Random networks are generated from node size or from resort odering of samples in gene expression dataset.
-#' @param input a gene expression \code{dataframe} with variables in columns and samples in rows or a vector of node names.
-#' @param nblock a numeric number to indicate how many blocks that consist the datasets. For example, to tell how many replicates or experiments are in the datasets.
-#' The datasets to generate random network will be resorted in block-wise.
-#' @param from a character string to tell the random network generation is based on nodes size or dataset.Options are "node" and "data".
-#' @param directed logical, if \code{FALSE}, the random network generated from nodes will be converted to symmetric matrix.
-#' @return The resorted datasets if \code{from='data'} or a random network matrix, the edge weights of which are in \eqn{[0,1]} if \code{from='node'}.
+#' The function is used to generate random datasets or random networks
+#' @details
+#' (a) Input a gene expression data frame with genes in columns and samples in rows, the function resorts the sample points for each genes in each experiments.
+#' (b) Input a string vector of gene names, the function generates random network with random edge weightes.
+#'
+#' @param input a gene expression data frame or a string vector of gene names.
+#' @param nexp a numeric number to indicate how many experiments in the datasets. The gene expression datasets are resorted in both experiment-wise and gene-wise.
+#' @param type a character string to indicate the resort datasets ("data") or to generate random networks ("network").
+#' @param directed logical, if \code{FALSE}, the random network generated from gene names will be converted to symmetric matrix.
+#' @return \code{random.net} returns a randomly resorted expression data frame or a random network matrix.
 #' @export
-random.net<-function(input,nblock,from='data',directed=F){
-  if(from=='data'){
+random.net<-function(input,nexp=NA,type='data',directed=F){
+  if(type=='data'){
     if(!is.data.frame(input))
-      stop('The input does not match to the way to generate random networks.')
-    data4random<-data.frame(id=rep(1:nblock,each=nrow(input)/nblock),input)
+      stop('The input does not match to the "type" to generate random networks.')
+    if(is.na(nexp))
+      stop('Please provide how many experiments in the time-series datasets.')
+    data4random<-data.frame(id=rep(1:nexp,each=nrow(input)/nexp),input)
     result<-plyr::ddply(data4random,.(id),colwise(sample))[,-1]
   }
-  if(from=='node'){
+  if(type=='network'){
     if(!is.vector(input))
-      stop('The input does not match to the way to generate random networks.')
+      stop('The input does not match to the "type" to generate random networks.')
     inf.random<-matrix(runif(length(input)^2),length(input),length(input))
     dimnames(inf.random)<-list(input,input)
     diag(inf.random)<-0
