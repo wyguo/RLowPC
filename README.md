@@ -8,7 +8,7 @@ install_github('wyguo/RLowPC')
 ```
 Additional packages used
 
-ppcor,corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, fdrtool
+ppcor, corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, fdrtool
 
 ##Examples of RLowPC R package
 ####Example1: RLowPC function
