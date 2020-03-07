@@ -1,6 +1,6 @@
 # RLowPC
 R package to construct Relevance Low order Partial Correlation gene networks
-##Installation
+## Installation
 To install the package, run the R codes
 ```{r}
 library(devtools)
@@ -10,8 +10,8 @@ Additional packages used
 
 ppcor, corpcor, minet, netbenchmark, ggplot2, gridExtra, plyr, fdrtool
 
-##Examples of RLowPC R package
-####Example1: RLowPC function
+## Examples of RLowPC R package
+#### Example1: RLowPC function
 ```{r,cache=T,include=T,message='hide',warning=F,eval=F}
 ##load library
 library(RLowPC)
@@ -88,7 +88,7 @@ plotAUC(table.methods = inf.table,
 
 ```
 
-####Example2: average.consensus function
+#### Example2: average.consensus function
 ```{r,cache=T,include=T,message='hide',warning=F}
  ##create two random networks
  library(RLowPC)
@@ -109,7 +109,7 @@ plotAUC(table.methods = inf.table,
  inf.consensus
 ```
 
-####Example3: table.evaluate function
+#### Example3: table.evaluate function
 ```{r,cache=T,include=T,message='hide',warning=F}
 ##load library
 library(RLowPC)
@@ -126,7 +126,7 @@ table.cor<-table.evaluate(inf.adj = inf.cor,ref.adj = ref.adj)
 head(table.cor)
  
 ```
-####Example4: edgelist2adjmatrix function
+#### Example4: edgelist2adjmatrix function
 ```{r,cache=T,include=T,message='hide',warning=F}
 ##load data
 library(RLowPC)
@@ -139,7 +139,7 @@ ref.adj<-edgelist2adjmatrix(ref.edge,genes,directed=F)
  
 ```
 
-####Example5: adjmatrix2edgelist function
+#### Example5: adjmatrix2edgelist function
 ```{r,cache=T,include=T,message='hide',warning=F}
 ##load data
 library(RLowPC)
